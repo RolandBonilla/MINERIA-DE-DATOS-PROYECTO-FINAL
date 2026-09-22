@@ -1,0 +1,160 @@
+{
+  "n_rows_raw": 7043,
+  "n_cols": 21,
+  "nulls_pct": {},
+  "dup_count": 22,
+  "dup_pct": 0.31,
+  "descriptive_stats": {
+    "tenure": {
+      "count": 7043.0,
+      "mean": 32.37,
+      "std": 24.56,
+      "min": 0.0,
+      "25%": 9.0,
+      "50%": 29.0,
+      "75%": 55.0,
+      "max": 72.0
+    },
+    "MonthlyCharges": {
+      "count": 7043.0,
+      "mean": 64.76,
+      "std": 30.09,
+      "min": 18.25,
+      "25%": 35.5,
+      "50%": 70.35,
+      "75%": 89.85,
+      "max": 118.75
+    },
+    "TotalCharges_num": {
+      "count": 7032.0,
+      "mean": 2283.3,
+      "std": 2266.77,
+      "min": 18.8,
+      "25%": 401.45,
+      "50%": 1397.48,
+      "75%": 3794.74,
+      "max": 8684.8
+    }
+  },
+  "outliers_monthlycharges": {
+    "q1": 35.5,
+    "q3": 89.85,
+    "iqr": 54.35,
+    "lower_bound": -46.02,
+    "upper_bound": 171.38,
+    "n_outliers": 0,
+    "pct_outliers": 0.0
+  },
+  "n_rows_after_dedup": 7021,
+  "feature_engineering": {
+    "Cargo_Promedio_Mensual": "TotalCharges / tenure (o MonthlyCharges si tenure=0)",
+    "Indice_Fidelidad": "(N servicios contratados x (tenure+1)) / (MonthlyCharges+1)"
+  },
+  "split": {
+    "train": 5616,
+    "test": 1405,
+    "train_pct": 80,
+    "test_pct": 20
+  },
+  "model_results": {
+    "Regresión Logística": {
+      "accuracy": 0.8007,
+      "precision": 0.6575,
+      "recall": 0.5161,
+      "f1": 0.5783,
+      "auc_roc": 0.8406,
+      "cv_accuracy_mean": 0.8027,
+      "cv_accuracy_std": 0.0146,
+      "cv_f1_mean": 0.5909,
+      "cv_f1_std": 0.0289,
+      "cv_auc_mean": 0.8466,
+      "cv_auc_std": 0.0157,
+      "confusion_matrix": [
+        [
+          933,
+          100
+        ],
+        [
+          180,
+          192
+        ]
+      ]
+    },
+    "Árbol de Decisión": {
+      "accuracy": 0.7907,
+      "precision": 0.6523,
+      "recall": 0.4489,
+      "f1": 0.5318,
+      "auc_roc": 0.8302,
+      "cv_accuracy_mean": 0.7901,
+      "cv_accuracy_std": 0.0078,
+      "cv_f1_mean": 0.5412,
+      "cv_f1_std": 0.0327,
+      "cv_auc_mean": 0.8219,
+      "cv_auc_std": 0.0177,
+      "confusion_matrix": [
+        [
+          944,
+          89
+        ],
+        [
+          205,
+          167
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 0.7972,
+      "precision": 0.6582,
+      "recall": 0.4866,
+      "f1": 0.5595,
+      "auc_roc": 0.8398,
+      "cv_accuracy_mean": 0.8043,
+      "cv_accuracy_std": 0.0173,
+      "cv_f1_mean": 0.5791,
+      "cv_f1_std": 0.037,
+      "cv_auc_mean": 0.8477,
+      "cv_auc_std": 0.0176,
+      "confusion_matrix": [
+        [
+          939,
+          94
+        ],
+        [
+          191,
+          181
+        ]
+      ]
+    }
+  },
+  "hyperparameters": {
+    "Regresión Logística": {
+      "solver": "lbfgs",
+      "C": 1.0,
+      "max_iter": 1000
+    },
+    "Árbol de Decisión": {
+      "max_depth": 6,
+      "criterion": "gini",
+      "min_samples_leaf": 20
+    },
+    "Random Forest": {
+      "n_estimators": 200,
+      "max_depth": 8,
+      "criterion": "gini"
+    }
+  },
+  "best_model": "Regresión Logística",
+  "top_features": {
+    "Contract_Month-to-month": 0.1215,
+    "tenure": 0.1157,
+    "TotalCharges": 0.1037,
+    "Indice_Fidelidad": 0.0648,
+    "MonthlyCharges": 0.0631,
+    "Cargo_Promedio_Mensual": 0.0619,
+    "OnlineSecurity_No": 0.057,
+    "TechSupport_No": 0.0516,
+    "InternetService_Fiber optic": 0.0514,
+    "Contract_Two year": 0.0347
+  }
+}
